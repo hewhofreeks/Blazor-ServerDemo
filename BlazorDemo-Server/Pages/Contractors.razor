@@ -1,0 +1,31 @@
+﻿@page "/contractors"
+@inherits Features.Contractors.ContractorsModel
+
+<h2>Here's some contractors</h2>
+
+@if (State.IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        @foreach (var contractor in State.ContractorList)
+        {
+            <tr>
+                <td>@contractor.ID</td>
+                <td>@contractor.Name</td>
+            </tr>
+        }
+        <tr>
+            <td><input type="text" @bind="NewContractorName" /></td>
+            <td><button @onclick="AddContractor">ADD CONTRACTOR</button></td>
+
+        </tr>
+    </table>
+
+}
